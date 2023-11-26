@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS post;
 DROP TABLE IF EXISTS token;
 DROP TABLE IF EXISTS user_account;
+DROP TABLE IF EXISTS task;
 
 CREATE TABLE user_account (
     user_id INT GENERATED ALWAYS AS IDENTITY,
@@ -28,3 +29,34 @@ CREATE TABLE token (
     PRIMARY KEY (token_id),
     FOREIGN KEY (user_id) REFERENCES user_account("user_id")
 );
+
+CREATE TABLE task (
+    id INT GENERATED ALWAYS AS IDENTITY,
+    task_name VARCHAR (100) NOT NULL,
+    status VARCHAR(50) DEFAULT 'not done',
+    num_volunteers_needed INT,
+    start_date DATE,
+    PRIMARY KEY (id)
+    
+);
+
+
+
+INSERT INTO task (task_name, num_volunteers_needed, start_date)
+VALUES ('Task 1', 3, '2023-11-10');
+
+
+INSERT INTO task (task_name, status, num_volunteers_needed, start_date)
+VALUES ('Task 2', 'in progress', 5, '2023-11-15');
+
+
+INSERT INTO task (task_name, status, num_volunteers_needed, start_date)
+VALUES ('Task 3', 'completed', 2, '2023-11-20');
+
+
+INSERT INTO task (task_name, num_volunteers_needed, start_date)
+VALUES ('Task 4', 1, '2023-11-25');
+
+
+INSERT INTO task (task_name, status, num_volunteers_needed, start_date)
+VALUES ('Task 5', 'not done', 4, '2023-11-30');
