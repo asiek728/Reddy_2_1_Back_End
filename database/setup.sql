@@ -8,6 +8,7 @@ CREATE TABLE user_account (
     user_id INT GENERATED ALWAYS AS IDENTITY,
     username VARCHAR(30) UNIQUE NOT NULL,
     password CHAR(60) NOT NULL,
+    email VARCHAR(40) UNIQUE NOT NULL,
     isAdmin BOOLEAN DEFAULT FALSE,
     PRIMARY KEY (user_id)
 );
