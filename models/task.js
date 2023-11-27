@@ -25,9 +25,9 @@ class Task {
     }
 
     static async create(data) {
-        const { task_name,num_volunteers_needed} = data;
-        let response = await db.query("INSERT INTO task (task_name,num_volunteers_needed,start_date) VALUES ($1, $2, CURRENT_DATE) RETURNING id;",
-            [task_name,num_volunteers_needed]);
+        const { task_name,num_volunteers_needed, status, start_date} = data;
+        let response = await db.query("INSERT INTO task (task_name,num_volunteers_needed, status, start_date) VALUES ($1, $2, $3, $4) RETURNING id;",
+            [task_name, num_volunteers_needed, status, start_date]);
         const newId = response.rows[0].id;
         const newTask = await Task.getOneById(newId);
         return newTask;
