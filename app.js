@@ -9,23 +9,30 @@ const taskRouter = require('./routers/task')
 const app = express()
 
 app.use(express.json())
-// if (process.env.NODE_ENV !== "test") 
 app.use(logger('dev'))
 app.use(cors())
-
-//app.use('/posts', postsRoutes)
 
 app.get('/', (req, res) => {
     res.send({
         message: "welcome",
-        description: "DIARY API",
+        description: "Council API",
         endpoints: [
-            "GET    /            200",
-            "GET    /posts       200",
-            "GET    /posts/:id   200",
-            "POST   /posts       201",
-            "PATCH  /posts/:id   200",
-            "DELETE /posts/:id   204",
+            "GET    /                200",
+            "GET    /posts           200",
+            "GET    /posts/:id       200",
+            "POST   /posts           201",
+            "PATCH  /posts/:id       200",
+            "DELETE /posts/:id       204",
+            "GET    /tasks           200",
+            "POST   /tasks           200",
+            "GET    /tasks/:id       200",
+            "PATCH  /tasks/:id       200",
+            "DELETE /tasks/:id       204",
+            "GET    /tokens          200",
+            "DELETE /tokens/:token   204",
+            "GET    /users           200",
+            "POST   /users/register  201",
+            "POST   /users/login     201",
         ]
     })
 })

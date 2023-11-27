@@ -9,6 +9,12 @@ class User {
         this.isAdmin = is_admin;
     }
 
+    static async getAll() {
+        const response = await db.query("SELECT * FROM user_account");
+        return response.rows.map(p => new User(p));
+    }
+
+
     static async getOneById(id) {
         const response = await db.query("SELECT * FROM user_account WHERE user_id = $1", [id]);
         if (response.rows.length != 1) {
