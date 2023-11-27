@@ -49,6 +49,17 @@ async function login (req, res) {
     }
 }
 
+async function destroy (req, res) {
+    try {
+        const id = parseInt(req.params.id);
+        const user= await User.getOneById(id);
+        const result = await user.destroy();
+        res.status(204).end();
+    } catch (err) {
+        res.status(404).json({"error": err.message})
+    }
+};
+
 module.exports = {
-    register, login, index
+    register, login, index, destroy
 }                           
