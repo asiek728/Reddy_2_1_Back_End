@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS post;
 DROP TABLE IF EXISTS token;
 DROP TABLE IF EXISTS user_account;
 DROP TABLE IF EXISTS task;
+DROP TABLE IF EXISTS task_user;
 
 CREATE TABLE user_account (
     user_id INT GENERATED ALWAYS AS IDENTITY,
@@ -37,6 +38,19 @@ CREATE TABLE task (
     num_volunteers_needed INT,
     start_date DATE,
     PRIMARY KEY (id)
+    
+);
+
+CREATE TABLE task_user (
+    user_id INT,
+    task_id INT,
+    start_date DATE,
+    end_date DATE,
+    done_flag_user BOOLEAN DEFAULT false,
+    done_flag_admin BOOLEAN DEFAULT false,
+    PRIMARY KEY (user_id, task_id),
+    FOREIGN KEY (user_id) REFERENCES user_account(user_id),
+    FOREIGN KEY (task_id) REFERENCES task(id)
     
 );
 
