@@ -5,6 +5,7 @@ const logger = require('morgan')
 const postRouter = require('./routers/post')
 const tokenRouter = require('./routers/token')
 const userRouter = require('./routers/user')
+const taskRouter = require('./routers/task')
 const app = express()
 
 app.use(express.json())
@@ -32,6 +33,7 @@ app.get('/', (req, res) => {
 app.use("/posts", postRouter);
 app.use("/users", userRouter);
 app.use("/tokens",tokenRouter)
+app.use("/tasks",taskRouter)
 
 app.post('/', (req, res) => {
     res.status(405).send('Not allowed!')
