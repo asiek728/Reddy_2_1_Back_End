@@ -40,6 +40,12 @@ class User {
         const newUser = await User.getOneById(newId);
         return newUser;
     }
+
+    
+    async destroy() {
+        let response = await db.query("DELETE FROM user_account WHERE user_id = $1 RETURNING *;", [this.id]);
+        return new User(response.rows[0]);
+    }
 }
 
 module.exports = User;
