@@ -50,7 +50,6 @@ CREATE TABLE task_user (
     PRIMARY KEY (user_id, task_id),
     FOREIGN KEY (user_id) REFERENCES user_account(user_id),
     FOREIGN KEY (task_id) REFERENCES task(id)
-    
 );
 
 
