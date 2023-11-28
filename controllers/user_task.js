@@ -20,6 +20,16 @@ async function create (req, res) {
     }
 };
 
+async function show (req, res) {
+    try {
+        const id = parseInt(req.params.id);
+        const task = await User_Task.getAllByUserId(id);
+        res.json(task);
+    } catch (err) {
+        res.status(404).json({"error": err.message})
+    }
+};
+
 module.exports = {
-    index, create
+    index, create, show
 }

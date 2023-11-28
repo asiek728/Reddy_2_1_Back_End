@@ -16,6 +16,14 @@ class User_Task {
         return response.rows.map(p => new User_Task(p));
     }
 
+    static async getAllByUserId(id) {
+        const response = await db.query("SELECT * FROM task_user WHERE user_id = $1", [id]);
+        if (response.rows.length < 1) {
+            throw new Error("Unable to locate tasks for this user.")
+        }
+        return response.rows.map(p => new User_Task(p));
+    }
+
     static async getOneById(id) {
         const response = await db.query("SELECT * FROM task_user WHERE id = $1", [id]);
         if (response.rows.length != 1) {
