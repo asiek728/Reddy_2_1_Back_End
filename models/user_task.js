@@ -9,6 +9,10 @@ class User_Task {
         this.end_date = data.end_date;
         this.done_flag_user = data.done_flag_user;
         this.done_flag_admin = data.done_flag_admin;
+
+        this.task_name = data.task_name;
+        this.status = data.status;
+
     }
 
     static async getAll() {
@@ -17,7 +21,7 @@ class User_Task {
     }
 
     static async getAllByUserId(id) {
-        const response = await db.query("SELECT * FROM task_user WHERE user_id = $1", [id]);
+        const response = await db.query("SELECT task.task_name, task.status, task.start_date FROM task INNER JOIN task_user ON task_user.task_id=task.id WHERE task_user.user_id = $1", [id]);
         if (response.rows.length < 1) {
             throw new Error("Unable to locate tasks for this user.")
         }

@@ -33,8 +33,8 @@ app.get('/', (req, res) => {
             "DELETE /tokens/:token   204",
             "GET    /users           200",
             "GET    /users/:id       200",
-            "GET    /users/:id/tasks 200",
-            "POST   /users/:id/tasks 200",
+            "GET    /users_tasks     200",
+            "POST   /users_tasks/:id 200",
             "POST   /users/register  201",
             "POST   /users/login     201",
         ]
