@@ -9,6 +9,6 @@ const user_taskRouter = Router();
 user_taskRouter.get("/", user_taskController.index);
 user_taskRouter.get("/:id", user_taskController.show);
 user_taskRouter.post("/", user_taskController.create);
-
+user_taskRouter.delete("/:id", user_taskController.destroy);
 
 module.exports = user_taskRouter;
