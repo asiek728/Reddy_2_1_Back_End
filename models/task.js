@@ -34,7 +34,7 @@ class Task {
     }
 
     async update(data) {
-        const response = await db.query("UPDATE task SET status = $1 WHERE id = $2 RETURNING *;", [data.status, this.id]);
+        const response = await db.query("UPDATE task SET task_name = $1, num_volunteers_needed = $2, status = $3, start_date = $4  WHERE id = $5 RETURNING *;", [data.task_name, data.num_volunteers_needed, data.status, data.start_date, this.id]);
 
         if (response.rows.length != 1) {
             throw new Error("Unable to update status.")
