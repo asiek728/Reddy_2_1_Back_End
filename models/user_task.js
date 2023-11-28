@@ -37,13 +37,22 @@ class User_Task {
         return new User_Task(response.rows[0]);
     }
 
+
     static async create(data) {
         const { user_id, task_id, start_date, end_date } = data;
-        let response = await db.query("INSERT INTO task_user (user_id, task_id, start_date, end_date, done_flag_user, done_flag_admin) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id;",
-            [user_id, task_id, start_date, end_date, false, false]);
-        const newId = response.rows[0].id;
-        const newTask = await User_Task.getOneById(newId);
-        return newTask;
+
+        let response = await db.query("SELECT * FROM task_user WHERE user_id = $1 AND task_id = $2", [user_id, task_id]);
+
+        if (response.rows.length != 1) {
+            response = await db.query("INSERT INTO task_user (user_id, task_id, start_date, end_date, done_flag_user, done_flag_admin) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id;",
+                [user_id, task_id, start_date, end_date, false, false]);
+            const newId = response.rows[0].id;
+            const newTask = await User_Task.getOneById(newId);
+            return newTask;
+        }
+        else {
+            throw new Error("User already enrolled in this task.")
+        }
     }
 
     async destroy() {
