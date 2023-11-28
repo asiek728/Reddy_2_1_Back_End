@@ -12,6 +12,16 @@ async function index (req, res) {
     }
 };
 
+async function show (req, res) {
+    try {
+        const id = parseInt(req.params.id);
+        const user = await User.getOneById(id);
+        res.json(user);
+    } catch (err) {
+        res.status(404).json({"error": err.message})
+    }
+};
+
 async function register (req, res) {
     try {
         const data = req.body;
@@ -41,7 +51,7 @@ async function login (req, res) {
             throw new Error("Incorrect credentials.");
         } else {
             const token = await Token.create(user.id);
-            res.status(200).json({ authenticated: true, token: token.token, isAdmin: user.isAdmin }); //Added isAdmin field to login API response, in order to store this flag on front-end side & show/hide certain buttons etc. based on it
+            res.status(200).json({ authenticated: true, token: token.token, isAdmin: user.isAdmin, user_id: user.id }); //Added isAdmin field to login API response, in order to store this flag on front-end side & show/hide certain buttons etc. based on it
         }
         
     } catch (err) {
@@ -61,5 +71,5 @@ async function destroy (req, res) {
 };
 
 module.exports = {
-    register, login, index, destroy
+    register, login, index, destroy, show
 }                           
