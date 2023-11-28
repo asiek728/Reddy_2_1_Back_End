@@ -29,5 +29,8 @@ describe('api server', () => {
         expect(response.body.description).toBe('Council API')
     })
 
+    test('responds to GET /tasks with status 200', (done) => {
+      request(api).get('/tasks').expect(200, done)
+    })
 
 })
