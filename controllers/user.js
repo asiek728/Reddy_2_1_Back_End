@@ -41,7 +41,7 @@ async function login (req, res) {
             throw new Error("Incorrect credentials.");
         } else {
             const token = await Token.create(user.id);
-            res.status(200).json({ authenticated: true, token: token.token });
+            res.status(200).json({ authenticated: true, token: token.token, isAdmin: user.isAdmin }); //Added isAdmin field to login API response, in order to store this flag on front-end side & show/hide certain buttons etc. based on it
         }
         
     } catch (err) {
