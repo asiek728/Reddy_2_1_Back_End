@@ -7,6 +7,7 @@ const user_taskRouter = Router();
 
 // user_taskRouter.get("/", authenticator, taskController.index);
 user_taskRouter.get("/", user_taskController.index);
+user_taskRouter.get("/:id", user_taskController.show);
 user_taskRouter.post("/", user_taskController.create);
 
 
