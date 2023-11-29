@@ -46,6 +46,26 @@ class User {
         let response = await db.query("DELETE FROM user_account WHERE user_id = $1 RETURNING *;", [this.id]);
         return new User(response.rows[0]);
     }
+
+    async updateUsername(data) {
+        const response = await db.query("UPDATE user_account SET username = $1  WHERE user_id = $2 RETURNING *;", [data.username,this.id]);
+
+        if (response.rows.length != 1) {
+            throw new Error("Unable to update username.")
+        }
+
+        return new User(response.rows[0]);
+    }
+
+    async updateEmail(data) {
+        const response = await db.query("UPDATE user_account SET email = $1  WHERE user_id = $2 RETURNING *;", [data.email,this.id]);
+
+        if (response.rows.length != 1) {
+            throw new Error("Unable to update email.")
+        }
+
+        return new User(response.rows[0]);
+    }
 }
 
 module.exports = User;

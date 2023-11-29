@@ -70,6 +70,29 @@ async function destroy (req, res) {
     }
 };
 
+async function update(req,res) {
+    try {
+        const param=req.params.id.split('-')
+        const id = parseInt(param[1])
+        console.log("param= ",param[0])
+        
+        const data = req.body
+        const userToUpdate = await User.getOneById(id)
+        let  updatedUser;
+        if (param[0]=="username") {
+            updatedUser= await userToUpdate.updateUsername(data)
+        }
+        else if (param[0]=="email") {
+             updatedUser = await userToUpdate.updateEmail(data)
+        }
+        res.status(200).send(updatedUser)
+        
+    } catch (err) {
+        res.status(404).json({"error": err.message})
+        
+    }
+}
+
 module.exports = {
-    register, login, index, destroy, show
+    register, login, index, destroy, show, update
 }                           
