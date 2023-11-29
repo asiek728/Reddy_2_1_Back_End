@@ -24,16 +24,16 @@ class Post {
     }
 
     static async create(data) {
-        const { title, date, category, content } = data;
-        let response = await db.query("INSERT INTO post (title, date, category, content) VALUES ($1, CURRENT_DATE, $2, $3) RETURNING post_id;",
-            [title, category, content]);
+        const { title, date, image_source, content } = data;
+        let response = await db.query("INSERT INTO post (title, date, image_source, content) VALUES ($1, $2, $3, $4) RETURNING post_id;",
+            [title, date, image_source, content]);
         const newId = response.rows[0].post_id;
         const newPost = await Post.getOneById(newId);
         return newPost;
     }
 
     async update(data) {
-        const response = await db.query("UPDATE post SET content = $1 WHERE post_id = $2 RETURNING *;", [data.content, this.id]);
+        const response = await db.query("UPDATE post SET content = $1, date = $2, title = $3, image_source = $4 WHERE post_id = $5 RETURNING *;", [data.content, data.date, data.title, data.image_source, this.id]);
 
         if (response.rows.length != 1) {
             throw new Error("Unable to update content.")
