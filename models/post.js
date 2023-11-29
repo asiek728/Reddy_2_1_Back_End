@@ -6,7 +6,7 @@ class Post {
         this.id = data.post_id;
         this.title = data.title;
         this.date = data.date
-        this.category = data.category
+        this.image_source = data.image_source
         this.content = data.content;
     }
 

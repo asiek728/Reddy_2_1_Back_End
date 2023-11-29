@@ -17,7 +17,7 @@ CREATE TABLE post (
     post_id INT GENERATED ALWAYS AS IDENTITY,
     date DATE,
     title VARCHAR (100) NOT NULL,
-    category VARCHAR(50) NOT NULL,
+    image_source VARCHAR(200) NOT NULL,
     content VARCHAR (500) NOT NULL,
     PRIMARY KEY (post_id)
     );
@@ -77,3 +77,12 @@ VALUES ('aaa', 'aaa', 'aaa@aaa.aaa', false);
 
 INSERT INTO task_user (user_id, task_id)
 VALUES (1, 3);
+
+INSERT INTO post (date, title, image_source, content)
+VALUES ('2023-11-30', 'Library Rennovation', 'https://www.reading.ac.uk/library/-/media/project/functions/library/images/refurb-pictures/refurbexternal2.jpg?la=en&hash=7257596A2B71C8A23FE4F625D53BC4D4', 'We have recieved a generous donation of over £40 million for the refurbishment of the Library. This will include exxtra study spaces and furniture. This will be open to the public by June 2024!');
+
+INSERT INTO post (date, title, image_source, content)
+VALUES ('2023-11-30', 'Free Homework Support', 'https://www.youthemployment.org.uk/dev/wp-content/uploads/2021/03/school-advice-students.jpg', 'We are offering free tuition in Maths, English and Science for GCSE children for those from disadvantged backgrounds');
+
+INSERT INTO post (date, title, image_source, content)
+VALUES ('2023-11-30', 'New Recycling Initiative', 'https://www.telegraph.co.uk/content/dam/environment/2023/06/02/TELEMMGLPICT000337992854_16857228652110_trans_NvBQzQNjv4Bq9ZgHWGWfvdgN-PUV7CBULdNJqZG_WVMBeQV4RVTW7AY.jpeg', 'We are teaming up with Greenpeace to propose some exciting new initiatives. Please stay tuned!');
