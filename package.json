@@ -7,6 +7,7 @@
   "dependencies": {
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
+    "coverage": "^0.4.1",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "morgan": "^1.10.0",
@@ -18,6 +19,8 @@
     "start": "node index.js",
     "setup-db": "node ./database/setup.js",
     "integrationTests": "jest --testPathPattern=/integration/ --watchAll --detectOpenHandles --runInBand --verbose",
-    "unitTests": "jest --testPathPattern=/unit/ --watchAll --verbose"
+    "unitTests": "jest --testPathPattern=/unit/ --watchAll --verbose",
+    "coverage": "jest --coverage",
+    "test": "jest --verbose --watchAll"
   }
 }
