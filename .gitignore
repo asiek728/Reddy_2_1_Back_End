@@ -4,3 +4,4 @@ node_modules
 coverage
 .env
 docker-compose.yaml
+package-lock.json
