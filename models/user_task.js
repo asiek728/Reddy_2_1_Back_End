@@ -6,11 +6,9 @@ class User_Task {
         this.id = data.id;
         this.user_id = data.user_id;
         this.task_id = data.task_id;
-        this.start_date = data.start_date;
-        this.end_date = data.end_date;
-        this.done_flag_user = data.done_flag_user;
-        this.done_flag_admin = data.done_flag_admin;
 
+        this.start_date = data.start_date;
+        //this.end_date = data.end_date;
         this.task_name = data.task_name;
         this.status = data.status;
 
@@ -39,13 +37,13 @@ class User_Task {
 
 
     static async create(data) {
-        const { user_id, task_id, start_date, end_date } = data;
+        const { user_id, task_id } = data;
 
         let response = await db.query("SELECT * FROM task_user WHERE user_id = $1 AND task_id = $2", [user_id, task_id]);
 
         if (response.rows.length != 1) {
-            response = await db.query("INSERT INTO task_user (user_id, task_id, start_date, end_date, done_flag_user, done_flag_admin) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id;",
-                [user_id, task_id, start_date, end_date, false, false]);
+            response = await db.query("INSERT INTO task_user (user_id, task_id) VALUES ($1, $2) RETURNING id;",
+                [user_id, task_id]);
             const newId = response.rows[0].id;
             const newTask = await User_Task.getOneById(newId);
             return newTask;

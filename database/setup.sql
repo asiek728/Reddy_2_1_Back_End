@@ -44,10 +44,6 @@ CREATE TABLE task_user (
     id INT GENERATED ALWAYS AS IDENTITY,
     user_id INT,
     task_id INT,
-    start_date DATE,
-    end_date DATE,
-    done_flag_user BOOLEAN DEFAULT false,
-    done_flag_admin BOOLEAN DEFAULT false,
     PRIMARY KEY (id),
     FOREIGN KEY (user_id) REFERENCES user_account("user_id"),
     FOREIGN KEY (task_id) REFERENCES task(id)
@@ -79,5 +75,5 @@ INSERT INTO user_account (username, password, email, isAdmin)
 VALUES ('aaa', 'aaa', 'aaa@aaa.aaa', false);
 
 
-INSERT INTO task_user (user_id, task_id, start_date, end_date, done_flag_user, done_flag_admin)
-VALUES (1, 3, '2023-11-15', '2023-11-18', false, false);
+INSERT INTO task_user (user_id, task_id)
+VALUES (1, 3);
