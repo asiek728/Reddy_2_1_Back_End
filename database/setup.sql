@@ -74,7 +74,13 @@ VALUES ('Help with craft market', 'not done', 6, '2023-11-26');
 
 
 INSERT INTO user_account (username, password, email, isAdmin)
-VALUES ('aaa', 'aaa', 'aaa@aaa.aaa', false);
+VALUES ('Mary', 'aaa', 'MaryO@gmail.com', false);
+
+INSERT INTO user_account (username, password, email, isAdmin)
+VALUES ('Tom', 'aaa', 'TomL@gmail.com', false);
+
+INSERT INTO user_account (username, password, email, isAdmin)
+VALUES ('John', 'aaa', 'JohnR@gmail.com', false);
 
 INSERT INTO user_account (username, password, email, isAdmin)
 VALUES ('admin', '$2b$12$wTz5JxBRClk3mIv2QbtXQ.c3OB2U9CqdOwlLCjm2pPCv6pcUISDp2', 'admin@council.com', true);
@@ -87,11 +93,20 @@ VALUES ('admin', '$2b$12$wTz5JxBRClk3mIv2QbtXQ.c3OB2U9CqdOwlLCjm2pPCv6pcUISDp2',
 INSERT INTO task_user (user_id, task_id)
 VALUES (1, 3);
 
-INSERT INTO post (date, title, image_source, content)
-VALUES ('2023-11-30', 'Library Rennovation', 'https://www.reading.ac.uk/library/-/media/project/functions/library/images/refurb-pictures/refurbexternal2.jpg?la=en&hash=7257596A2B71C8A23FE4F625D53BC4D4', 'We have recieved a generous donation of over £40 million for the refurbishment of the Library. This will include exxtra study spaces and furniture. This will be open to the public by June 2024!');
+INSERT INTO task_user (user_id, task_id)
+VALUES (2, 4);
+
+INSERT INTO task_user (user_id, task_id)
+VALUES (2, 6);
+
+INSERT INTO task_user (user_id, task_id)
+VALUES (3, 6);
 
 INSERT INTO post (date, title, image_source, content)
-VALUES ('2023-11-30', 'Free Homework Support', 'https://www.youthemployment.org.uk/dev/wp-content/uploads/2021/03/school-advice-students.jpg', 'We are offering free tuition in Maths, English and Science for GCSE children for those from disadvantged backgrounds');
+VALUES ('2023-11-20', 'Library Rennovation', 'https://www.reading.ac.uk/library/-/media/project/functions/library/images/refurb-pictures/refurbexternal2.jpg?la=en&hash=7257596A2B71C8A23FE4F625D53BC4D4', 'We have recieved a generous donation of over £40 million for the refurbishment of the Library. This will include exxtra study spaces and furniture. This will be open to the public by June 2024!');
+
+INSERT INTO post (date, title, image_source, content)
+VALUES ('2023-11-23', 'Free Homework Support', 'https://www.youthemployment.org.uk/dev/wp-content/uploads/2021/03/school-advice-students.jpg', 'We are offering free tuition in Maths, English and Science for GCSE children for those from disadvantged backgrounds');
 
 INSERT INTO post (date, title, image_source, content)
 VALUES ('2023-11-30', 'New Recycling Initiative', 'https://www.telegraph.co.uk/content/dam/environment/2023/06/02/TELEMMGLPICT000337992854_16857228652110_trans_NvBQzQNjv4Bq9ZgHWGWfvdgN-PUV7CBULdNJqZG_WVMBeQV4RVTW7AY.jpeg', 'We are teaming up with Greenpeace to propose some exciting new initiatives. Please stay tuned!');
