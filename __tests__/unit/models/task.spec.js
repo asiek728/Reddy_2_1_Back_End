@@ -43,6 +43,28 @@ describe('task', ()=>{
         });
     });
 
+    describe('create', () => {
+        it('resolves with task on successful db query', async () => {
+          let taskData = { task_name: 'New task', status: 'done',num_volunteers_needed:4,start_date:'23-10-2021' }
+          //jest.spyOn(db, 'query').mockResolvedValueOnce({ rows: [] })
     
+          jest.spyOn(db, 'query').mockResolvedValueOnce({ rows: [{ id: 1 }] })
+
+          jest.spyOn(db, 'query').mockResolvedValueOnce({ rows: [{ ...taskData, id: 1 }] })
+    
+          console.log("Console log test")
+
+          const result = await Task.create(taskData)
+          console.log("Result=", result)
+          expect(result).toBeTruthy()
+          expect(result).toHaveProperty('id')
+          expect(result).toHaveProperty('task_name')
+          expect(result).toHaveProperty('status')
+          expect(result).toHaveProperty('num_volunteers_needed')
+          expect(result).toHaveProperty('start_date')
+
+
+        })
+    })
 })
 
