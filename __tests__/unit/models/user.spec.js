@@ -48,6 +48,28 @@ describe('user', ()=>{
         });
     });
 
+    describe('create', () => {
+        it('resolves with user on successful db query', async () => {
+          let userData = { username: 'username1', password: 'fsdfsfsgfsgfds',email:'email@email',isAdmin:true }
+
+          jest.spyOn(db, 'query').mockResolvedValueOnce({ rows: [{ id : 1 }] })
+
+          jest.spyOn(db, 'query').mockResolvedValueOnce({ rows: [{ ...userData, id: 1 }] })
+
+    
+          const result = await User.create(userData)
+          expect(result).toBeTruthy()
+          expect(result).toHaveProperty('id')
+          expect(result).toHaveProperty('username')
+          expect(result).toHaveProperty('password')
+          expect(result).toHaveProperty('email')
+          expect(result).toHaveProperty('isAdmin')
+        })
+    
+
+      })    
+    
     
 })
+
 
