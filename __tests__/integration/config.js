@@ -11,7 +11,7 @@ const resetTestDB = () => {
   return new Promise(async (resolve, reject) => {
     try {
       const db = new Pool({
-        connectionString: process.env.DB_TEST_URL
+        connectionString: process.env.DB_URL
       });
       await db.query(reset)
       resolve('Test DB reset')
