@@ -1,11 +1,14 @@
 const request = require('supertest')
 const app = require('../../app')
-const postRouter = require('../../routers/post')
-const postTask = require('../../routers/task')
+const { resetTestDB } = require('./config')
 
 
 describe('api server', () => {
     let api;
+
+    beforeEach(async () => {
+      await resetTestDB()
+    })
   
     beforeAll(() => {
       api = app.listen(4000, () => {
