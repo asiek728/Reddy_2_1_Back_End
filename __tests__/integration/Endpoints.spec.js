@@ -41,6 +41,10 @@ describe('api server', () => {
         .expect({ data: { ...testData, id: 7 } }, done)
     })
 
+    test('responds to DELETE /posts/:id with status 204', (done) => {
+      request(api).delete('/posts/1').expect(204, done)
+    })
+
 
     it('responds to GET / with a message and a description', async () => {
         const response = await request(api).get('/')
