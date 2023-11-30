@@ -28,7 +28,7 @@ describe('api server', () => {
      test('responds to POST /goats with a 201 status code', (done) => {
       const testData = {
         title: "Clean beach",
-        date: 11/11/2023,
+        date: "11/11/2023",
         image_source: 'https://1000logos.net/wp-content/uploads/2021/05/Google-logo.png',
         content: 'We need to clean the beaches'
       }
