@@ -1,0 +1,33 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:14
+    container_name: councilDatabase
+    ports:
+      - 5432:5432
+    volumes:
+      - goats_db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=councilDatabase
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=jkljkl
+
+  testing_db:
+    image: postgres:14
+    container_name: testing
+    ports:
+      - 5433:5432
+    volumes:
+      - test_db:/var/lib/postgresql/data
+      - ./server/database/:/docker-entrypoint-initdb.d/:ro
+    environment:
+      - POSTGRES_DB=testing
+      - POSTGRES_USER=testing
+      - POSTGRES_PASSWORD=jkljkl
+
+volumes:
+  goats_db:
+  test_db:
+
+    # DB_URL=postgres://admin:jkljkl@localhost:5432/councilDatabase
+    # DB_TEST_URL=postgres://testing:jkljkl@localhost:5433/testing

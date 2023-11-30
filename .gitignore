@@ -3,5 +3,4 @@ node_modules
 .vscode
 coverage
 .env
-docker-compose.yaml
 package-lock.json
