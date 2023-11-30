@@ -50,29 +50,38 @@ CREATE TABLE task_user (
 );
 
 
+INSERT INTO task (task_name, num_volunteers_needed, start_date)
+VALUES ('Babysit toddlers', 3, '2023-11-10');
+
+
+INSERT INTO task (task_name, status, num_volunteers_needed, start_date)
+VALUES ('Count books', 'in progress', 5, '2023-11-15');
+
+
+INSERT INTO task (task_name, status, num_volunteers_needed, start_date)
+VALUES ('IT help', 'completed', 5, '2023-11-20');
+
 
 INSERT INTO task (task_name, num_volunteers_needed, start_date)
-VALUES ('Task 1', 3, '2023-11-10');
+VALUES ('Reading books for children', 8, '2023-11-25');
 
 
 INSERT INTO task (task_name, status, num_volunteers_needed, start_date)
-VALUES ('Task 2', 'in progress', 5, '2023-11-15');
-
-
-INSERT INTO task (task_name, status, num_volunteers_needed, start_date)
-VALUES ('Task 3', 'completed', 2, '2023-11-20');
-
-
-INSERT INTO task (task_name, num_volunteers_needed, start_date)
-VALUES ('Task 4', 1, '2023-11-25');
-
+VALUES ('Help in community garden', 'not done', 4, '2023-11-30');
 
 INSERT INTO task (task_name, status, num_volunteers_needed, start_date)
-VALUES ('Task 5', 'not done', 4, '2023-11-30');
+VALUES ('Help with craft market', 'not done', 6, '2023-11-26');
 
 
 INSERT INTO user_account (username, password, email, isAdmin)
 VALUES ('aaa', 'aaa', 'aaa@aaa.aaa', false);
+
+INSERT INTO user_account (username, password, email, isAdmin)
+VALUES ('admin', '$2b$12$wTz5JxBRClk3mIv2QbtXQ.c3OB2U9CqdOwlLCjm2pPCv6pcUISDp2', 'admin@council.com', true);
+
+
+
+
 
 
 INSERT INTO task_user (user_id, task_id)
