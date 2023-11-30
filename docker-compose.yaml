@@ -6,7 +6,7 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - goats_db:/var/lib/postgresql/data
+      - council_db:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=councilDatabase
       - POSTGRES_USER=admin
@@ -26,7 +26,7 @@ services:
       - POSTGRES_PASSWORD=jkljkl
 
 volumes:
-  goats_db:
+  council_db:
   test_db:
 
     # DB_URL=postgres://admin:jkljkl@localhost:5432/councilDatabase
