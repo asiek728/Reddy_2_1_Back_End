@@ -1,4 +1,4 @@
-const tasksController = require('../../../controllers/task')
+const taskController = require('../../../controllers/task')
 const Task = require('../../../models/task')
 
 const mockSend = jest.fn()
@@ -21,7 +21,7 @@ describe('tasks controller', () => {
       jest.spyOn(Task, 'getAll')
         .mockResolvedValue(testTasks)
 
-      await tasksController.index(null, mockRes)
+      await taskController.index(null, mockRes)
 
       expect(Task.getAll).toHaveBeenCalledTimes(1)
       expect(mockStatus).toHaveBeenCalledWith(200)
@@ -32,7 +32,7 @@ describe('tasks controller', () => {
       jest.spyOn(Task, 'getAll')
         .mockRejectedValue(new Error('Something happened to your db'))
 
-      await tasksController.index(null, mockRes)
+      await taskController.index(null, mockRes)
 
       expect(Task.getAll).toHaveBeenCalledTimes(1)
       expect(mockStatus).toHaveBeenCalledWith(500)
