@@ -83,6 +83,10 @@ INSERT INTO user_account (username, password, email, isAdmin)
 VALUES ('John', 'aaa', 'JohnR@gmail.com', false);
 
 INSERT INTO user_account (username, password, email, isAdmin)
+VALUES ('Jessica', 'aaa', 'JessicaWR@gmail.com', false);
+
+
+INSERT INTO user_account (username, password, email, isAdmin)
 VALUES ('admin', '$2b$12$wTz5JxBRClk3mIv2QbtXQ.c3OB2U9CqdOwlLCjm2pPCv6pcUISDp2', 'admin@council.com', true);
 
 
