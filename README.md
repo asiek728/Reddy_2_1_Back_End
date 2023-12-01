@@ -1,4 +1,7 @@
-# Reddy_2_1_Back_End
+# Give a Hand Back End
+
+## Project Description
+We have developed this app to help solve the issue of redundant talent and to help the locals keep track of pending serevices. Admins can log in and update posts on the news page, tasks on the services page and see the number of volunteers. Volunteers can create an account and enroll themselves on different tasks of their choice. 
 
 ## Installation and Usage
 
@@ -47,4 +50,25 @@
 ```
 The app will run on the port specified in the `.env` file: `http://localhost:PORT_from_env/`  
 
+## Technologies used on Back End
+- Javascript
+- express
+- docker
+- elephantSQL (during production)
+
+**Testing:**
+- jest
+- supertest
+
+## Wins
+Successfully implemented authentication, so only admins are able to access the admin page and update posts
+
+## Challenges
+We struggled to get a lot of our tests to pass
+
+
+## Screenshots of significant code
+![Users and tasks table](./screenshots/tasks_task_user.png)
+![User Accounts table](./screenshots/user_account.png)
+![user enrolling on task](./screenshots/user_task_create.png)
 

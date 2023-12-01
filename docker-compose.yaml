@@ -19,7 +19,7 @@ services:
       - 5433:5432
     volumes:
       - test_db:/var/lib/postgresql/data
-      - ./server/database/:/docker-entrypoint-initdb.d/:ro
+      - ./database/:/docker-entrypoint-initdb.d/:ro
     environment:
       - POSTGRES_DB=testing
       - POSTGRES_USER=testing

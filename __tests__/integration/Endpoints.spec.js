@@ -2,30 +2,29 @@ const request = require('supertest')
 const app = require('../../app')
 const { resetTestDB } = require('./config')
 
-
 describe('api server', () => {
-    let api;
+  let api
 
-    beforeEach(async () => {
-      await resetTestDB()
+  beforeEach(async () => {
+    await resetTestDB()
+  })
+
+  beforeAll(() => {
+    api = app.listen(4000, () => {
+      console.log('Test server running on port 4000')
     })
-  
-    beforeAll(() => {
-      api = app.listen(4000, () => {
-        console.log('Test server running on port 4000')
-      })
-    })
-  
-    afterAll((done) => {
-      console.log('Gracefully stopping test server')
-      api.close(done)
-    })
+  })
+
+  afterAll((done) => {
+    console.log('Gracefully closing server')
+    api.close(done)
+  })
 
     test('responds to GET / with status 200', (done) => {
         request(api).get('/').expect(200, done)
     })
 
-     test('responds to POST /goats with a 201 status code', (done) => {
+     test('responds to POST /posts with a 201 status code', (done) => {
       const testData = {
         title: "Clean beach",
         date: "11/11/2023",
@@ -38,15 +37,19 @@ describe('api server', () => {
         .send(testData)
         .set('Accept', 'application/json')
         .expect(201)
-        .expect({ data: { ...testData, id: 7 } }, done)
+        .expect({ data: { ...testData, id: 4 } }, done)
     })
 
     test('responds to DELETE /posts/:id with status 204', (done) => {
       request(api).delete('/posts/1').expect(204, done)
     })
 
+    test('responds to DELETE with a 404 status code if the goat does not exist', (done) => {
+      request(api).delete('/posts/9').expect(404, done)
+    })
 
-    it('responds to GET / with a message and a description', async () => {
+
+    test('responds to GET / with a message and a description', async () => {
         const response = await request(api).get('/')
     
         expect(response.statusCode).toBe(200)
@@ -56,6 +59,23 @@ describe('api server', () => {
 
     test('responds to GET /tasks with status 200', (done) => {
       request(api).get('/tasks').expect(200, done)
+    })
+
+    test('responds to POST /tasks with a 201 status code', (done) => {
+      const testData = {
+        task_name: "Clean beach",
+        num_volunteers_needed: 3,
+        status: 'not done',
+        start_date: '11/11/2023'
+      }
+
+  
+      request(api)
+        .post('/tasks')
+        .send(testData)
+        .set('Accept', 'application/json')
+        .expect(201)
+        .expect({ data: { ...testData, id: 4 } }, done)
     })
 
 })
