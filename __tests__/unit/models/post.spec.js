@@ -47,7 +47,26 @@ describe('post', ()=>{
     });
 
      
+    describe('create', () => {
+        it('resolves with post on successful db query', async () => {
+          let postData = { title: 'New title', date: '21-10-2024',image_source:'image.jpg',content:'Fresh news' }
 
+          jest.spyOn(db, 'query').mockResolvedValueOnce({ rows: [{ id : 1 }] })
+
+          jest.spyOn(db, 'query').mockResolvedValueOnce({ rows: [{ ...postData, id: 1 }] })
+
+    
+          const result = await Post.create(postData)
+          expect(result).toBeTruthy()
+          expect(result).toHaveProperty('id')
+          expect(result).toHaveProperty('title')
+          expect(result).toHaveProperty('date')
+          expect(result).toHaveProperty('image_source')
+          expect(result).toHaveProperty('content')
+        })
+    
+
+      })
 
     
 })
